@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: forum-backend
+        working-directory: ./forum-backend
 
     strategy:
       matrix:
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: frontend
+        working-directory: ./frontend
 
     strategy:
       matrix:
