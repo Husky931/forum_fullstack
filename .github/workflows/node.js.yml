@@ -30,6 +30,7 @@ jobs:
         filters: |
           forum-backend:
             - 'forum-backend/**'
+    - run: cd _work && cd forum_fullstack && cd forum_fullstack && cd forum-backend
     - name: Use Node.js ${{ matrix.node-version }}
       if: steps.filter.outputs.forum-backend == 'true'
       uses: actions/setup-node@v3
@@ -68,6 +69,7 @@ jobs:
         filters: |
           frontend:
             - 'frontend/**'
+    - run: cd _work && cd forum_fullstack && cd forum_fullstack && cd frontend
     - name: Use Node.js ${{ matrix.node-version }}
       if: steps.filter.outputs.frontend == 'true'
       uses: actions/setup-node@v3
