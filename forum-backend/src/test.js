@@ -1,1 +1,5 @@
-var greeting = 'hellozuy'
+
+
+const greets = () => 'hi'
+
+var greeting = greets()
