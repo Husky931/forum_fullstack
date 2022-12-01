@@ -86,8 +86,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-        cache-dependency-path: /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend/package.json
-    - name: install deps
+        cache-dependency-path: /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend/yarn.lock
+    - name: install deps --frozen-lockfile
       if: steps.filter.outputs.frontend == 'true'
       run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend && yarn install
     - name: build app
