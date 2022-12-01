@@ -48,7 +48,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-        cache-dependency-path: /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend/yarn.lock
+        cache-dependency-path: './forum-backend/yarn.lock'
     - name: install deps
       if: steps.filter.outputs.forum-backend == 'true'
       run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend && yarn install --frozen-lockfile
@@ -86,7 +86,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-        cache-dependency-path: /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend/yarn.lock
+        cache-dependency-path: './frontend/yarn.lock'
     - name: install deps --frozen-lockfile
       if: steps.filter.outputs.frontend == 'true'
       run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend && yarn install
