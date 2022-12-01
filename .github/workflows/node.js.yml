@@ -30,9 +30,14 @@ jobs:
         filters: |
           forum-backend:
             - 'forum-backend/**'
-    - run: cd ~
+#     - run: cd ~
     - run: pwd
- 
+    - name: Use Node.js ${{ matrix.node-version }}
+      if: steps.filter.outputs.forum-backend == 'true'
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
     - name: install deps
       if: steps.filter.outputs.forum-backend == 'true'
     - run: yarn install
