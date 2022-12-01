@@ -40,13 +40,13 @@ jobs:
         cache-dependency-path: /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend/package.json
     - name: install deps
       if: steps.filter.outputs.forum-backend == 'true'
-      run: yarn install
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend && yarn install
     - name: build app
       if: steps.filter.outputs.forum-backend == 'true'
-      run: NODE_ENV=production yarn build
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend && NODE_ENV=production yarn build
     - name: turn on app
       if: steps.filter.outputs.forum-backend == 'true'
-      run: HOST=${{ secrets.HOST }} PORT=${{ secrets.PORT }} APP_KEYS=${{ secrets.APP_KEYS }} API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }} ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }} JWT_SECRET=${{ secrets.JWT_SECRET }} AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_ACCESS_SECRET=${{ secrets.AWS_ACCESS_SECRET }} export NODE_ENV=production&&pm2 start yarn --name "backend" -- start
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend && HOST=${{ secrets.HOST }} PORT=${{ secrets.PORT }} APP_KEYS=${{ secrets.APP_KEYS }} API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }} ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }} JWT_SECRET=${{ secrets.JWT_SECRET }} AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_ACCESS_SECRET=${{ secrets.AWS_ACCESS_SECRET }} export NODE_ENV=production&&pm2 start yarn --name "backend" -- start
     
   build_frontend:
     name: build_frontend
@@ -78,11 +78,11 @@ jobs:
         cache-dependency-path: /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend/package.json
     - name: install deps
       if: steps.filter.outputs.frontend == 'true'
-      run: yarn install
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontent && yarn install
     - name: build app
       if: steps.filter.outputs.frontend == 'true'
-      run: yarn build
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontent && yarn build
     - name: start app
       if: steps.filter.outputs.frontend == 'true'
-      run: pm2 start yarn --name "frontend" -- start
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontent && pm2 start yarn --name "frontend" -- start
     
