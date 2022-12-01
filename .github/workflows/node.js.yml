@@ -31,6 +31,7 @@ jobs:
           forum-backend:
             - 'forum-backend/**'
     - run: cd ~
+    - run: pwd
     - run: cd actions-runner && cd _work && cd forum_fullstack && cd forum_fullstack && cd forum-backend
     - name: Use Node.js ${{ matrix.node-version }}
       if: steps.filter.outputs.forum-backend == 'true'
