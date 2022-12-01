@@ -48,16 +48,16 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-       
+        cache-dependency-path: /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend/yarn.lock
     - name: install deps
       if: steps.filter.outputs.forum-backend == 'true'
-      run: yarn install --frozen-lockfile
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend && yarn install --frozen-lockfile
     - name: build app
       if: steps.filter.outputs.forum-backend == 'true'
-      run: NODE_ENV=production yarn build
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend && NODE_ENV=production yarn build
     - name: turn on app
       if: steps.filter.outputs.forum-backend == 'true'
-      run: HOST=${{ secrets.HOST }} PORT=${{ secrets.PORT }} APP_KEYS=${{ secrets.APP_KEYS }} API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }} ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }} JWT_SECRET=${{ secrets.JWT_SECRET }} AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_ACCESS_SECRET=${{ secrets.AWS_ACCESS_SECRET }} export NODE_ENV=production&&pm2 start yarn --name "backend" -- start
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend && HOST=${{ secrets.HOST }} PORT=${{ secrets.PORT }} APP_KEYS=${{ secrets.APP_KEYS }} API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }} ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }} JWT_SECRET=${{ secrets.JWT_SECRET }} AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_ACCESS_SECRET=${{ secrets.AWS_ACCESS_SECRET }} export NODE_ENV=production&&pm2 start yarn --name "backend" -- start
     
   build_frontend:
     name: build_frontend
