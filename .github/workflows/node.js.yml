@@ -36,6 +36,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        cache-dependency-path: './forum-backend/yarn.lock'
     - name: install deps
       if: steps.filter.outputs.forum-backend == 'true'
       run: yarn install
@@ -73,6 +74,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        cache-dependency-path: './frontend/yarn.lock'
     - name: install deps
       if: steps.filter.outputs.frontend == 'true'
       run: yarn install
