@@ -38,7 +38,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: './forum-backend/yarn.lock'
+        cache-dependency-path: '.yarn.lock'
     - name: install deps
       if: steps.filter.outputs.forum-backend == 'true'
       run: yarn install
