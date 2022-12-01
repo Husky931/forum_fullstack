@@ -12,7 +12,7 @@ on:
 jobs:
   build_backend:
     name: build_backend
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./forum-backend
@@ -62,7 +62,7 @@ jobs:
   build_frontend:
     name: build_frontend
     needs: build_backend
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./frontend
