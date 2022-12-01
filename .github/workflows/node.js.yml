@@ -94,11 +94,11 @@ jobs:
         cache-dependency-path: './frontend/yarn.lock'
     - name: install deps --frozen-lockfile
       if: steps.filter.outputs.frontend == 'true'
-      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend && yarn install
+      run: yarn install
     - name: build app
       if: steps.filter.outputs.frontend == 'true'
-      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend && yarn build
+      run: yarn build
     - name: start app
       if: steps.filter.outputs.frontend == 'true'
-      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend && pm2 start yarn --name "frontend" -- start
+      run: pm2 start yarn --name "frontend" -- start
     
