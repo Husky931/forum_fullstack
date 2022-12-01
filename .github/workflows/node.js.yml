@@ -78,11 +78,11 @@ jobs:
         cache-dependency-path: /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend/package.json
     - name: install deps
       if: steps.filter.outputs.frontend == 'true'
-      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontent && yarn install
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend && yarn install
     - name: build app
       if: steps.filter.outputs.frontend == 'true'
-      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontent && yarn build
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend && yarn build
     - name: start app
       if: steps.filter.outputs.frontend == 'true'
-      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontent && pm2 start yarn --name "frontend" -- start
+      run: cd /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/frontend && pm2 start yarn --name "frontend" -- start
     
