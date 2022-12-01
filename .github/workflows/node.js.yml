@@ -33,7 +33,7 @@ jobs:
 #     - run: cd ~
     - run: pwd
     - name: Use Node.js ${{ matrix.node-version }}
-      if: steps.filter.outputs.forum-backend == 'true'
+#       if: steps.filter.outputs.forum-backend == 'true'
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
