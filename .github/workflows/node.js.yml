@@ -12,7 +12,7 @@ on:
 jobs:
   build_backend:
     name: build_backend
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     defaults:
       run:
         working-directory: ./forum-backend
@@ -23,7 +23,17 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    
+    - name: create env file
+      run: |
+              touch .env
+              echo HOST=${{ secrets.HOST }} >> .env
+              echo PORT=${{ secrets.PORT }} >> .env
+              echo APP_KEYS=${{ secrets.APP_KEYS }} >> .env
+              echo API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }} >> .env
+              echo ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }} >> .env
+              echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
+              echo AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} >> .env
+              echo AWS_ACCESS_SECRET=${{ secrets.AWS_ACCESS_SECRET }} >> .env
     - uses: actions/checkout@v3
     - uses: dorny/paths-filter@v2
       id: filter
@@ -38,10 +48,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-        cache-dependency-path: /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend/package.json
+        cache-dependency-path: /home/ubuntu/actions-runner/_work/forum_fullstack/forum_fullstack/forum-backend/package-lock.json
     - name: install deps
       if: steps.filter.outputs.forum-backend == 'true'
-      run: yarn install
+      run: yarn install --frozen-lockfile
     - name: build app
       if: steps.filter.outputs.forum-backend == 'true'
       run: NODE_ENV=production yarn build
@@ -52,7 +62,7 @@ jobs:
   build_frontend:
     name: build_frontend
     needs: build_backend
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     defaults:
       run:
         working-directory: ./frontend
