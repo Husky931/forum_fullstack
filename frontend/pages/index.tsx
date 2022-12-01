@@ -137,7 +137,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         `${process.env.NEXT_PUBLIC_STRAPI_URL}api/threads?sort=updatedAt%3Adesc&pagination[limit]=-1`
     )
     let latestPosts = await backendData.json()
-    let bla = "15"
+    let bla = "16"
 
     return {
         props: {
