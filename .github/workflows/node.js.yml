@@ -16,6 +16,7 @@ jobs:
     defaults:
       run:
         working-directory: ./forum-backend
+        shell: bash
 
     strategy:
       matrix:
