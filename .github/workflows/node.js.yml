@@ -24,12 +24,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: dorny/paths-filter@v2
-      id: filter
-      with: 
-        filters: |
-          forum-backend:
-            - 'forum-backend/**'
+
     - run: cd ~
     - run: pwd
     - name: Use Node.js ${{ matrix.node-version }}
