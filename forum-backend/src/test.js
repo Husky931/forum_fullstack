@@ -1,1 +1,1 @@
-var greeting = 'helloz'
+var greeting = 'hellozu'
