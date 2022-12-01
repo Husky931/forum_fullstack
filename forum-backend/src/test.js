@@ -1,5 +1,5 @@
 
 
-const greets = () => 'hajzs'
+const greets = () => 'hajzas'
 
 var greeting = greets()
