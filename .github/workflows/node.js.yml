@@ -100,5 +100,5 @@ jobs:
       run: yarn build
     - name: start app
       if: steps.filter.outputs.frontend == 'true'
-      run: pm2 start yarn --name "frontend" -- start
+      run: NEXT_PUBLIC_STRAPI_URL=${{ secrets.NEXT_PUBLIC_STRAPI_URL }} NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }} NEXT_PUBLIC_GOOGLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }} NEXT_PUBLIC_GOOGLE_CLIENT_SECRET=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET }} JWT_SECRETZ=${{ secrets.JWT_SECRETZ }} pm2 start yarn --name "frontend" -- start
     
