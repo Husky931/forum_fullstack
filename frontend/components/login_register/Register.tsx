@@ -17,7 +17,7 @@ export default function SignUp() {
         if (password !== passwordConfirm) setPasswordConfirmError(true)
 
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}api/auth/local/register`,
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/auth/local/register`,
             {
                 headers: {
                     "Content-Type": "application/json"

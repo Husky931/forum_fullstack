@@ -12,12 +12,15 @@ export function Provider({ children }: any) {
             const user = !!getTokenFromLocalCookie()
             if (user) {
                 const token = Cookies.get("jwt")
-                const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}api/users/me/`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`
+                const res = await fetch(
+                    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/users/me/`,
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`
+                        }
                     }
-                })
+                )
                 const data = await res.json()
                 setUserData(data)
             }

@@ -26,7 +26,7 @@ const Home: NextPage<{ data: Response; category: string }> = ({
 
     const handlePaginationChange = async (_: any, page: number) => {
         let fetchPaginationPage = await fetch(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}api/threads?filters[category][$eq]=${category}&pagination[page]=${page}`
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/threads?filters[category][$eq]=${category}&pagination[page]=${page}`
         )
         const response = await fetchPaginationPage.json()
         setPageIndex(page)
@@ -94,7 +94,7 @@ const Home: NextPage<{ data: Response; category: string }> = ({
 }
 
 export async function getStaticPaths() {
-    // let response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}api/threads`)
+    // let response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/threads`)
     // let data = await response.json()
     // let uniquePaths = [...new Set(data.data.map((m: any) => m.attributes.category))]
 
@@ -126,7 +126,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: any) {
     const category = context.params.category
     let response = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}api/threads?filters[category][$eq]=${category}`
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/threads?filters[category][$eq]=${category}`
     )
     let data = await response.json()
 

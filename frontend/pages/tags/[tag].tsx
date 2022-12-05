@@ -21,7 +21,7 @@ const Latest: NextPage<{ data: Response; tag: string }> = ({ data, tag }) => {
 
     const handlePaginationChange = async (_: any, page: number) => {
         let fetchPaginationPage = await fetch(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}api/threads?filters[tags][$contains]=${tag}&pagination[page]=${page}`
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/threads?filters[tags][$contains]=${tag}&pagination[page]=${page}`
         )
         const response = await fetchPaginationPage.json()
         setPageIndex(page)
@@ -79,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     //@ts-ignore
     const tag = params.tag
     let response = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}api/threads?filters[tags][$containsi]=${tag}`
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/threads?filters[tags][$containsi]=${tag}`
     )
     let data = await response.json()
 

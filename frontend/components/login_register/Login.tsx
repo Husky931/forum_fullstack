@@ -17,7 +17,7 @@ const Login: React.FC<{ setDisplayRegister: (display: boolean) => void }> = ({
 
     async function loginUser() {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}api/auth/local`,
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/auth/local`,
             {
                 headers: {
                     "Content-Type": "application/json"
