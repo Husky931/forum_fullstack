@@ -1,1 +1,1 @@
-cost bla = 'hi'
+cost bla = 'h9i'
