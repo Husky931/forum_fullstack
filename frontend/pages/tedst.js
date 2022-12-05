@@ -1,1 +1,1 @@
-cost bla = 'h9i'
+const bla = 'h9i'
